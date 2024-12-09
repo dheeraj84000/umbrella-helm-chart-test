@@ -7,12 +7,6 @@ version: 0.2.10
 # follow Semantic Versioning. It is recommended to use it with quotes.
 appVersion: "drop"
 dependencies:
-  - alias: nginx-manager
-    name: java
-    version: 0.2.10
-    repository: oci://120963419001.dkr.ecr.ap-south-1.amazonaws.com
-    condition: nginx-manager.enabled
-
   - alias: rollouts-demo
     name: java
     version: 0.2.10
