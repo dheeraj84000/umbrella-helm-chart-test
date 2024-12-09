@@ -26,11 +26,31 @@ leastResources: &id001
     cpu: 595m
     memory: 1Gi
 
-nginx-manager:
+rollouts-demo:
   enabled: true
-  tag: 1
+  tag: purple
   service:
-    name: nginx-manager
+    name: rollouts-demo
+    port: 80
+  secrets:
+    enabled: false
+  resources: *id001
+
+rollouts-demo-green:
+  enabled: true
+  tag: green
+  service:
+    name: rollouts-demo-green
+    port: 80
+  secrets:
+    enabled: false
+  resources: *id001  
+
+rollouts-demo-yellow:
+  enabled: true
+  tag: yellow
+  service:
+    name: rollouts-demo-yellow
     port: 80
   secrets:
     enabled: false

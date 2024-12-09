@@ -11,7 +11,7 @@ spec:
     path: chart  # path to your umbrella chart in the Git repo
     helm:
       valueFiles:
-        - dev.yaml  # Reference to your custom values file
+        - ../values-file/dev.yaml  # Reference to your custom values file
   destination:
     server: https://kubernetes.default.svc  # or another cluster URL if deploying to a different cluster
     namespace: argocd-testing-helm   # Target Kubernetes namespace

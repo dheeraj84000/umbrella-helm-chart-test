@@ -12,3 +12,21 @@ dependencies:
     version: 0.2.10
     repository: oci://120963419001.dkr.ecr.ap-south-1.amazonaws.com
     condition: nginx-manager.enabled
+
+  - alias: rollouts-demo
+    name: java
+    version: 0.2.10
+    repository: oci://120963419001.dkr.ecr.ap-south-1.amazonaws.com
+    condition: rollouts-demo.enabled    
+  
+  - alias: rollouts-demo-green
+    name: java
+    version: 0.2.10
+    repository: oci://120963419001.dkr.ecr.ap-south-1.amazonaws.com
+    condition: rollouts-demo-green.enabled
+
+  - alias: rollouts-demo-yellow
+    name: java
+    version: 0.2.10
+    repository: oci://120963419001.dkr.ecr.ap-south-1.amazonaws.com
+    condition: rollouts-demo-yellow.enabled  
