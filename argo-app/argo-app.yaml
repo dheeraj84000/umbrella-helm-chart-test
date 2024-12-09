@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: umbrella-chart
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: 120963419001.dkr.ecr.ap-south-1.amazonaws.com   # your Git repo URL with the umbrella chart
+    targetRevision: HEAD  # or a specific branch or tag
+    path: chart/Chart.yaml  # path to your umbrella chart in the Git repo
+    helm:
+      valueFiles:
+        - values-file/dev.yaml  # Reference to your custom values file
+  destination:
+    server: https://kubernetes.default.svc  # or another cluster URL if deploying to a different cluster
+    namespace: argocd-testing-helm   # Target Kubernetes namespace
+  syncPolicy:
+    automated:
+      prune: false  # Automatically delete resources no longer defined in the chart
+      selfHeal: false  # Automatically heal resources if they drift from the desired state
+    syncOptions:
+      - CreateNamespace=true  # Optionally, auto-create the namespace if needed
