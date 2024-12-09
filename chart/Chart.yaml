@@ -1,0 +1,14 @@
+apiVersion: v2
+name: Umbrella
+description: Testing umbrella chart
+type: application
+version: 0.2.10
+# This is the version number of the drop being deployed. Versions are not expected to
+# follow Semantic Versioning. It is recommended to use it with quotes.
+appVersion: "drop"
+dependencies:
+  - alias: nginx-manager
+    name: java
+    version: 0.2.10
+    repository: oci://120963419001.dkr.ecr.ap-south-1.amazonaws.com
+    condition: nginx-manager.enabled

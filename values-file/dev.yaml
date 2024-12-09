@@ -1,0 +1,37 @@
+global: 
+  repository: 120963419001.dkr.ecr.ap-south-1.amazonaws.com
+  environment: dev
+  initContainerImage: 120963419001.dkr.ecr.ap-south-1.amazonaws.com/nginx:v2
+  nfs: fs-0373878d753fde8f3.efs.eu-central-1.amazonaws.com
+  serviceAccount: hgw-service-readonly-clusterrole
+  customNfsPath: "/hgw/"
+  pdb: false
+  keda: false
+  env:
+    jprofile: dev
+    configserveruri: configserver:http://config-server.hgw-shared-dev.svc.cluster.local:8485
+    sentrydsn: https://d394afbddd5447d6b957019621246ba4@sentry.yo-digital.com/47
+    natco: shared
+    http_proxy: http://squid.squid.svc.cluster.local:3128
+    https_proxy: http://squid.squid.svc.cluster.local:3128
+    no_proxy: 169.254.169.254,127.0.0.1,localhost,.yo-digital.com,.svc.cluster.local,.amazonaws.com
+    dtenv: dev
+    configserverhost: http://config-server.hgw-shared-dev.svc.cluster.local.:8485
+
+leastResources: &id001
+  requests:
+    cpu: 170m
+    memory: 850Mi
+  limits:
+    cpu: 595m
+    memory: 1Gi
+
+nginx-manager:
+  enabled: true
+  tag: 1
+  service:
+    name: nginx-manager
+    port: 80
+  secrets:
+    enabled: false
+  resources: *id001
